@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfxmvyqrm2440"]
+
+[ext_resource type="Script" path="res://pong.gd" id="1_1pg36"]
+[ext_resource type="PackedScene" uid="uid://o0olaisviufp" path="res://paddle.tscn" id="2_hl8h7"]
+[ext_resource type="PackedScene" uid="uid://devlcbviw0omk" path="res://player_paddle_controller.tscn" id="3_k2408"]
+[ext_resource type="PackedScene" uid="uid://dtamawvxfmenu" path="res://ball.tscn" id="3_rtck7"]
+[ext_resource type="PackedScene" uid="uid://dpty8cjw8yrms" path="res://wall.tscn" id="3_yj7i1"]
+
+[node name="Pong" type="Node2D"]
+script = ExtResource("1_1pg36")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -161.0
+offset_top = -63.0
+offset_right = 1424.0
+offset_bottom = 816.0
+color = Color(0, 0, 0, 1)
+
+[node name="Ball" parent="." instance=ExtResource("3_rtck7")]
+position = Vector2(123, 525)
+input_pickable = true
+
+[node name="Wall" parent="." instance=ExtResource("3_yj7i1")]
+position = Vector2(-1, 0)
+scale = Vector2(32, 1)
+top = true
+
+[node name="Wall2" parent="." instance=ExtResource("3_yj7i1")]
+position = Vector2(6, 680)
+scale = Vector2(32, 1)
+
+[node name="PlayerPaddleController" parent="." instance=ExtResource("3_k2408")]
+
+[node name="Paddle" parent="PlayerPaddleController" instance=ExtResource("2_hl8h7")]
+position = Vector2(30.0686, 271)
+
+[node name="PlayerPaddleController2" parent="." instance=ExtResource("3_k2408")]
+down_input = "p2_move_down"
+up_input = "p2_move_up"
+
+[node name="Paddle" parent="PlayerPaddleController2" instance=ExtResource("2_hl8h7")]
+position = Vector2(1250, 270)
