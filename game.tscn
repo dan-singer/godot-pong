@@ -22,12 +22,9 @@ input_pickable = true
 
 [node name="Wall" parent="." instance=ExtResource("3_yj7i1")]
 position = Vector2(-1, 0)
-scale = Vector2(32, 1)
-top = true
 
 [node name="Wall2" parent="." instance=ExtResource("3_yj7i1")]
 position = Vector2(6, 680)
-scale = Vector2(32, 1)
 
 [node name="PlayerPaddleController" parent="." instance=ExtResource("3_k2408")]
 

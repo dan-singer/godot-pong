@@ -1,83 +1,35 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpty8cjw8yrms"]
+[gd_scene load_steps=6 format=3 uid="uid://dpty8cjw8yrms"]
 
 [ext_resource type="Script" path="res://wall.gd" id="1_wpvd3"]
-[ext_resource type="Shader" path="res://wall.gdshader" id="2_8ijl0"]
+[ext_resource type="PackedScene" uid="uid://c0h0tblvbwnrs" path="res://impact_visualizer.tscn" id="2_mhdjk"]
+[ext_resource type="Shader" path="res://impact_visualizer.gdshader" id="3_3fksk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ail5x"]
-size = Vector2(40, 40)
+size = Vector2(1280, 40)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_22oly"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hl62n"]
 resource_local_to_scene = true
-shader = ExtResource("2_8ijl0")
-shader_parameter/radius = 0.2
-shader_parameter/inner_color = Color(0.176419, 0.176419, 0.176419, 1)
-shader_parameter/outer_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_6ypvt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.2]
-}
-
-[sub_resource type="Animation" id="Animation_0m4ki"]
-resource_name = "transition"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 0.25),
-"update": 0,
-"values": [-0.1, 1.0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"apply_target_color"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5thl2"]
-_data = {
-"RESET": SubResource("Animation_6ypvt"),
-"transition": SubResource("Animation_0m4ki")
-}
+shader = ExtResource("3_3fksk")
+shader_parameter/impactdata_colors = null
+shader_parameter/impactdata_impacts = null
+shader_parameter/impactdata_directions = null
+shader_parameter/impact_row = 1
+shader_parameter/aspect = 32.0
+shader_parameter/border_thickness = 0.002
+shader_parameter/border_color = Color(1, 1, 1, 1)
+shader_parameter/negative_color = null
+shader_parameter/use_test_data = true
+shader_parameter/progress = 0.0
+shader_parameter/trace_width = 0.015
+shader_parameter/test = Vector2(1, 0.1)
 
 [node name="Wall" type="StaticBody2D"]
 script = ExtResource("1_wpvd3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(20, 20)
+position = Vector2(640, 20)
 shape = SubResource("RectangleShape2D_ail5x")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_22oly")
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.233925, 0.233925, 0.233925, 1)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_5thl2")
-}
+[node name="ImpactVisualizer" parent="." instance=ExtResource("2_mhdjk")]
+material = SubResource("ShaderMaterial_hl62n")
+offset_right = 1280.0

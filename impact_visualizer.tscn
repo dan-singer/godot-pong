@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0h0tblvbwnrs"]
+
+[ext_resource type="Shader" path="res://impact_visualizer.gdshader" id="1_xfe0i"]
+[ext_resource type="Script" path="res://impact_visualizer.gd" id="1_xtqwp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_okr54"]
+resource_local_to_scene = true
+shader = ExtResource("1_xfe0i")
+shader_parameter/impactdata_colors = null
+shader_parameter/impactdata_impacts = null
+shader_parameter/impactdata_directions = null
+shader_parameter/impact_row = 0
+shader_parameter/aspect = 0.15
+shader_parameter/border_thickness = 0.045
+shader_parameter/border_color = Color(1, 1, 1, 1)
+shader_parameter/negative_color = null
+shader_parameter/use_test_data = false
+shader_parameter/progress = 0.0
+shader_parameter/trace_width = 0.12
+shader_parameter/test = null
+
+[sub_resource type="Animation" id="Animation_6bsh3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hmqjv"]
+resource_name = "impact"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qhmnh"]
+_data = {
+"RESET": SubResource("Animation_6bsh3"),
+"impact": SubResource("Animation_hmqjv")
+}
+
+[node name="ImpactVisualizer" type="ColorRect"]
+material = SubResource("ShaderMaterial_okr54")
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_xtqwp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qhmnh")
+}
