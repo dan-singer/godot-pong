@@ -1,6 +1,7 @@
-extends Node2D
+class_name Pong extends Node2D
 
 @export var initial_countdown := 3
+@export var points_to_win = 5
 
 @onready var p1 : Paddle = $PlayerPaddleController/Paddle
 @onready var p2 : Paddle = $PlayerPaddleController2/Paddle

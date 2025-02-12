@@ -1,6 +1,7 @@
 class_name Ball extends CharacterBody2D
 
-var speed = 750
+var speed = 700
+var first_launch_speed = 400
 var vel := Vector2.ZERO
 
 @export var colors : Array[Color];
@@ -20,11 +21,11 @@ func stop_ball():
 	vel = Vector2.ZERO
 	
 func launch_at_random_angle():
-	var angle := randf_range(-PI/4, PI/4)
+	var angle := randf_range(-PI/8, PI/8)
 	if randi() % 2 == 1:
 		angle += PI
 	var dir := Vector2.from_angle(angle)
-	vel = dir * speed
+	vel = dir * first_launch_speed
 	ball_bounced.emit()
 	
 func clamp_vector_by_angle(v: Vector2, angle: float) -> Vector2:
@@ -46,6 +47,7 @@ func _physics_process(delta):
 		if (collider.is_in_group("hittable")):
 			normal = collider.handle_ball_collision(collision.get_position(), collision.get_normal(), vel, current_color)
 			update_color()
+		vel = vel.normalized() * speed
 		vel = -vel.reflect(normal)
 		vel = clamp_vector_by_angle(vel, PI/4)
 		ball_bounced.emit()

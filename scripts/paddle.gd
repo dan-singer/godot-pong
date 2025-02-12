@@ -43,7 +43,7 @@ func get_ball_normal(impact_pos : Vector2, normal : Vector2) -> Vector2:
 	var height := get_size().y
 	var normalized_impact = inverse_lerp(position.y, position.y + height, impact_pos.y)
 	var angle_mult = sign(normal.x)
-	var normal_mod_angle = lerp(-PI/8 * angle_mult, PI/8 * angle_mult, normalized_impact)
+	var normal_mod_angle = lerp(-PI/6 * angle_mult, PI/6 * angle_mult, normalized_impact)
 	var rotated_normal = normal.rotated(normal_mod_angle)
 	$DebugLine.global_position = impact_pos
 	$DebugLine.rotation = normal_mod_angle
@@ -51,5 +51,5 @@ func get_ball_normal(impact_pos : Vector2, normal : Vector2) -> Vector2:
 	
 
 func _physics_process(delta):
-	velocity = Vector2(0, normalized_velocity * speed)
-	move_and_collide(velocity * delta)
+	var v = Vector2(0, normalized_velocity * speed)
+	move_and_collide(v * delta)

@@ -22,10 +22,6 @@ window/size/viewport_height=720
 window/size/initial_position_type=3
 window/stretch/mode="canvas_items"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
-
 [gui]
 
 theme/custom="res://themes/pong.tres"
