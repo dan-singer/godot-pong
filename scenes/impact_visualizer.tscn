@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://c0h0tblvbwnrs"]
 
-[ext_resource type="Shader" path="res://impact_visualizer.gdshader" id="1_xfe0i"]
-[ext_resource type="Script" path="res://impact_visualizer.gd" id="1_xtqwp"]
+[ext_resource type="Shader" path="res://shaders/impact_visualizer.gdshader" id="1_sojew"]
+[ext_resource type="Script" path="res://scripts/impact_visualizer.gd" id="2_l8oih"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_okr54"]
 resource_local_to_scene = true
-shader = ExtResource("1_xfe0i")
+shader = ExtResource("1_sojew")
 shader_parameter/impactdata_colors = null
 shader_parameter/impactdata_impacts = null
 shader_parameter/impactdata_directions = null
@@ -60,7 +60,7 @@ _data = {
 material = SubResource("ShaderMaterial_okr54")
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_xtqwp")
+script = ExtResource("2_l8oih")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

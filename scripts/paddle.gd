@@ -4,7 +4,7 @@ class_name Paddle extends CharacterBody2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var impact_visualizer: ImpactVisualizer = $ImpactVisualizer
 var normalized_velocity: float
-var speed = 300
+var speed = 500
 
 @export var impact_colors: Array[Color]
 @export var paddle_size := Vector2(30, 300):
@@ -14,6 +14,7 @@ var speed = 300
 			$CollisionShape2D.shape.size = paddle_size
 			$CollisionShape2D.position.x = paddle_size.x / 2
 			$CollisionShape2D.position.y = paddle_size.y / 2
+			$ImpactVisualizer.size = paddle_size
 
 func get_size() -> Vector2:
 	return collision.get_shape().get_rect().size

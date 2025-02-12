@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://dtamawvxfmenu"]
 
-[ext_resource type="Shader" path="res://ball.gdshader" id="1_w6uxv"]
-[ext_resource type="Script" path="res://ball.gd" id="1_welfs"]
+[ext_resource type="Shader" path="res://shaders/ball.gdshader" id="1_w6uxv"]
+[ext_resource type="Script" path="res://scripts/ball.gd" id="1_welfs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f6b11"]
-radius = 20.0
+radius = 15.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fx8ou"]
 shader = ExtResource("1_w6uxv")
@@ -14,17 +14,17 @@ shader_parameter/inner_color = null
 shader_parameter/border_color = Color(1, 1, 1, 1)
 
 [node name="Ball" type="CharacterBody2D"]
+collision_mask = 14
 script = ExtResource("1_welfs")
 colors = Array[Color]([Color(0.984341, 0.90397, 0.413452, 1), Color(0.934774, 0.617314, 0.947502, 1), Color(0.298069, 0.711139, 0.945312, 1), Color(0.998639, 0.917608, 0.806371, 1), Color(0.462417, 0.889541, 0.775035, 1)])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_f6b11")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_fx8ou")
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
 pivot_offset = Vector2(20, 20)
