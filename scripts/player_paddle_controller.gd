@@ -1,4 +1,4 @@
-extends Node2D
+class_name PlayerPaddleController extends Node2D
 
 @export var down_input = "p1_move_down"
 @export var up_input = "p1_move_up"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ModeConfig" load_steps=5 format=3 uid="uid://b4y0x01klug61"]
+
+[ext_resource type="Script" path="res://scripts/player_rules.gd" id="1_lfw8q"]
+[ext_resource type="Script" path="res://scripts/mode_config.gd" id="1_n74yn"]
+
+[sub_resource type="Resource" id="Resource_7ogj4"]
+script = ExtResource("1_lfw8q")
+is_bot = false
+bot_speed = 0.5
+
+[sub_resource type="Resource" id="Resource_n1lhv"]
+script = ExtResource("1_lfw8q")
+is_bot = true
+bot_speed = 0.2
+
+[resource]
+script = ExtResource("1_n74yn")
+p0Rules = SubResource("Resource_7ogj4")
+p1Rules = SubResource("Resource_n1lhv")
+title = "Easy"

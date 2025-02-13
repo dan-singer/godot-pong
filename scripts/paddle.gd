@@ -11,10 +11,12 @@ var speed = 500
 	set(size):
 		paddle_size = size
 		if Engine.is_editor_hint():
-			$CollisionShape2D.shape.size = paddle_size
-			$CollisionShape2D.position.x = paddle_size.x / 2
-			$CollisionShape2D.position.y = paddle_size.y / 2
-			$ImpactVisualizer.size = paddle_size
+			var node = $CollisionShape2D
+			if node:
+				$CollisionShape2D.shape.size = paddle_size
+				$CollisionShape2D.position.x = paddle_size.x / 2
+				$CollisionShape2D.position.y = paddle_size.y / 2
+				$ImpactVisualizer.size = paddle_size
 
 func get_size() -> Vector2:
 	return collision.get_shape().get_rect().size

@@ -1,16 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfxmvyqrm2440"]
+[gd_scene load_steps=15 format=3 uid="uid://cfxmvyqrm2440"]
 
 [ext_resource type="Script" path="res://scripts/pong.gd" id="1_1pg36"]
 [ext_resource type="PackedScene" uid="uid://cvwx7fusrx673" path="res://scenes/hud.tscn" id="2_hklih"]
 [ext_resource type="PackedScene" uid="uid://o0olaisviufp" path="res://scenes/paddle.tscn" id="2_hl8h7"]
+[ext_resource type="PackedScene" uid="uid://dxd0htkhucs3" path="res://scenes/P1HumanController.tscn" id="3_8va3w"]
 [ext_resource type="Shader" path="res://scenes/dashed_lines.gdshader" id="3_eodd7"]
-[ext_resource type="PackedScene" uid="uid://devlcbviw0omk" path="res://scenes/player_paddle_controller.tscn" id="3_k2408"]
+[ext_resource type="PackedScene" uid="uid://devlcbviw0omk" path="res://scenes/P0HumanController.tscn" id="3_k2408"]
 [ext_resource type="PackedScene" uid="uid://dtamawvxfmenu" path="res://scenes/ball.tscn" id="3_rtck7"]
 [ext_resource type="Shader" path="res://scenes/bg.gdshader" id="3_tskal"]
 [ext_resource type="PackedScene" uid="uid://dpty8cjw8yrms" path="res://scenes/wall.tscn" id="3_yj7i1"]
 [ext_resource type="Script" path="res://scenes/bg.gd" id="4_rb85k"]
+[ext_resource type="PackedScene" uid="uid://djbgyn7hbamtw" path="res://scenes/AIController.tscn" id="4_tdjtm"]
 [ext_resource type="PackedScene" uid="uid://6wodr35qarhp" path="res://scenes/edge_detector.tscn" id="7_eoa5s"]
-[ext_resource type="Script" path="res://scripts/ai_paddle_controller.gd" id="7_jsrsr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nq402"]
 shader = ExtResource("3_tskal")
@@ -26,6 +27,10 @@ shader_parameter/color = Color(1, 1, 1, 1)
 
 [node name="Pong" type="Node2D"]
 script = ExtResource("1_1pg36")
+p0_human_controller_scene = ExtResource("3_k2408")
+p1_human_controller_scene = ExtResource("3_8va3w")
+ai_controller_scene = ExtResource("4_tdjtm")
+paddle_scene = ExtResource("2_hl8h7")
 
 [node name="HUD" parent="." instance=ExtResource("2_hklih")]
 
@@ -61,17 +66,6 @@ position = Vector2(-1, 0)
 [node name="Wall2" parent="." instance=ExtResource("3_yj7i1")]
 position = Vector2(0, 680)
 
-[node name="PlayerPaddleController" parent="." instance=ExtResource("3_k2408")]
-
-[node name="Paddle" parent="PlayerPaddleController" instance=ExtResource("2_hl8h7")]
-position = Vector2(0.00347596, -215.577)
-
-[node name="PlayerPaddleController2" parent="." instance=ExtResource("3_k2408")]
-script = ExtResource("7_jsrsr")
-
-[node name="Paddle" parent="PlayerPaddleController2" instance=ExtResource("2_hl8h7")]
-position = Vector2(1279.07, -136.228)
-
 [node name="Edge0" parent="." instance=ExtResource("7_eoa5s")]
 
 [node name="Edge1" parent="." instance=ExtResource("7_eoa5s")]
@@ -79,5 +73,6 @@ position = Vector2(1333, 396)
 rotation = 3.14159
 player_index = 1
 
+[connection signal="game_over" from="." to="HUD" method="_on_pong_game_over"]
 [connection signal="score_updated" from="." to="HUD" method="_on_pong_score_updated"]
 [connection signal="score_updated" from="." to="BG" method="_on_pong_score_updated"]

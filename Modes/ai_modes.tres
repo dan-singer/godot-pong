@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ModeCollection" load_steps=3 format=3 uid="uid://dxr6v1wo8bpsh"]
+
+[ext_resource type="Script" path="res://scripts/mode_config.gd" id="1_nm671"]
+[ext_resource type="Script" path="res://scripts/mode_collection.gd" id="2_h5pig"]
+
+[resource]
+script = ExtResource("2_h5pig")
+modes = Array[ExtResource("1_nm671")]([])
