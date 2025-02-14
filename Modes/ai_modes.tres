@@ -1,8 +1,13 @@
-[gd_resource type="Resource" script_class="ModeCollection" load_steps=3 format=3 uid="uid://dxr6v1wo8bpsh"]
+[gd_resource type="Resource" script_class="ModeCollection" load_steps=6 format=3 uid="uid://dxr6v1wo8bpsh"]
 
 [ext_resource type="Script" path="res://scripts/mode_config.gd" id="1_nm671"]
 [ext_resource type="Script" path="res://scripts/mode_collection.gd" id="2_h5pig"]
+[ext_resource type="Resource" uid="uid://b4y0x01klug61" path="res://Modes/mode_ai_easy.tres" id="2_nen6f"]
+[ext_resource type="Resource" uid="uid://dmtkrpe83kn3s" path="res://Modes/mode_ai_medium.tres" id="3_4wk3h"]
+[ext_resource type="Resource" uid="uid://cd0dy66f4qq33" path="res://Modes/mode_ai_hard.tres" id="4_s1e2j"]
 
 [resource]
 script = ExtResource("2_h5pig")
-modes = Array[ExtResource("1_nm671")]([])
+modes = Array[ExtResource("1_nm671")]([ExtResource("2_nen6f"), ExtResource("3_4wk3h"), ExtResource("4_s1e2j")])
+header = "Select Difficulty"
+description = "Play against an AI-controlled bot! Use [W] and [S] to move up and down."

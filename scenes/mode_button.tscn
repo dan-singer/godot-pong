@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://o58a5cugrmy2"]
+
+[ext_resource type="Script" path="res://scripts/mode_config_button.gd" id="1_b70co"]
+[ext_resource type="Resource" uid="uid://cd0dy66f4qq33" path="res://Modes/mode_ai_hard.tres" id="2_kb5qk"]
+
+[node name="ModeButton" type="Button"]
+text = "Singleplayer"
+script = ExtResource("1_b70co")
+config = ExtResource("2_kb5qk")

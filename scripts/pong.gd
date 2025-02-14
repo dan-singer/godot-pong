@@ -1,11 +1,12 @@
 class_name Pong extends Node2D
 
 @export var initial_countdown := 3
-@export var points_to_win = 1
+@export var points_to_win = 5
 @export var p0_human_controller_scene: PackedScene
 @export var p1_human_controller_scene: PackedScene
 @export var ai_controller_scene: PackedScene
 @export var paddle_scene: PackedScene
+@export var front_end_scene: PackedScene = preload("res://scenes/game.tscn")
 
 @onready var ball : Ball = $Ball
 @onready var hud: HUD = $HUD
@@ -73,6 +74,8 @@ func set_score(player: int, score: int):
 	if score == points_to_win:
 		winner = player
 		game_over.emit(winner)
+		await get_tree().create_timer(2.0).timeout
+		get_tree().change_scene_to_packed(front_end_scene)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -1,0 +1,164 @@
+[gd_scene load_steps=10 format=3 uid="uid://bf465mmp1xrxg"]
+
+[ext_resource type="Script" path="res://scripts/front_end.gd" id="1_qgmlh"]
+[ext_resource type="Script" path="res://scripts/mode_collection_container.gd" id="2_0qcgj"]
+[ext_resource type="Script" path="res://scripts/mode_collection_button.gd" id="2_cehpg"]
+[ext_resource type="Resource" uid="uid://dxr6v1wo8bpsh" path="res://Modes/ai_modes.tres" id="3_a2pu7"]
+[ext_resource type="Resource" uid="uid://0y16sn4mivru" path="res://Modes/multiplayer_modes.tres" id="4_xpblh"]
+[ext_resource type="Shader" path="res://shaders/test.gdshader" id="7_8ctnd"]
+[ext_resource type="Texture2D" uid="uid://cuakbf51urv3u" path="res://soil-none-5i4x9p.jpg" id="7_o0sk5"]
+[ext_resource type="Script" path="res://scripts/blur_effect.gd" id="7_t627j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yi16w"]
+shader = ExtResource("7_8ctnd")
+shader_parameter/quality = 8
+shader_parameter/angular_quality = 21
+shader_parameter/radius = 0.035
+shader_parameter/sprSize = Vector2(1280, 720)
+shader_parameter/tint = Color(0.481561, 0.756094, 0.679069, 1)
+shader_parameter/tex = ExtResource("7_o0sk5")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="LiveBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_yi16w")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_t627j")
+
+[node name="SubViewport" type="SubViewport" parent="LiveBackground"]
+size = Vector2i(1280, 720)
+
+[node name="Camera2D" type="Camera2D" parent="LiveBackground/SubViewport"]
+offset = Vector2(640, 360)
+
+[node name="FrontEnd" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qgmlh")
+
+[node name="Label" type="Label" parent="FrontEnd"]
+layout_mode = 0
+offset_right = 374.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 64
+text = "FANCY PONG
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FrontEnd"]
+custom_minimum_size = Vector2(960, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -126.5
+offset_right = 480.0
+offset_bottom = 126.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="FrontEnd/VBoxContainer"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="FrontEnd/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 24
+text = "HEADER"
+
+[node name="Back" type="Button" parent="FrontEnd/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_type_variation = &"Back"
+text = "X"
+
+[node name="Modes" type="Control" parent="FrontEnd/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ModeCollections" type="HBoxContainer" parent="FrontEnd/VBoxContainer/Modes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -219.0
+offset_top = -24.0
+offset_right = 219.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SingleplayerButton" type="Button" parent="FrontEnd/VBoxContainer/Modes/ModeCollections"]
+layout_mode = 2
+text = "Singleplayer"
+script = ExtResource("2_cehpg")
+mode_collection = ExtResource("3_a2pu7")
+
+[node name="Control" type="Control" parent="FrontEnd/VBoxContainer/Modes/ModeCollections"]
+custom_minimum_size = Vector2(5, 30)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="FrontEnd/VBoxContainer/Modes/ModeCollections/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+pivot_offset = Vector2(2.5, 60)
+
+[node name="MultiplayerButton" type="Button" parent="FrontEnd/VBoxContainer/Modes/ModeCollections"]
+layout_mode = 2
+text = "Multiplayer"
+script = ExtResource("2_cehpg")
+mode_collection = ExtResource("4_xpblh")
+
+[node name="CurrentModeCollection" type="HBoxContainer" parent="FrontEnd/VBoxContainer/Modes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_0qcgj")
+
+[node name="HelpPanel" type="PanelContainer" parent="FrontEnd/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="FrontEnd/VBoxContainer/HelpPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HelpText" type="Label" parent="FrontEnd/VBoxContainer/HelpPanel/MarginContainer"]
+layout_mode = 2
+text = "TEST DESCRIPTION"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="FrontEnd/VBoxContainer/PanelContainer/Back" to="FrontEnd" method="_on_back_pressed"]
