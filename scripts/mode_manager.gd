@@ -1,7 +1,7 @@
 extends Node
 
 var game_scene: PackedScene = preload("res://scenes/game.tscn")
-var default_mode: ModeConfig = preload("res://Modes/mode_ai_medium.tres")
+var default_mode: ModeConfig = preload("res://Modes/mode_2P.tres")
 
 var current_mode: ModeConfig:
 	get():

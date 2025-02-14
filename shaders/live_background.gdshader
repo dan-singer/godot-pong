@@ -41,4 +41,3 @@ vec4 gaussianBlur(vec2 uv) {
 void fragment() {
 	COLOR = gaussianBlur(UV) * tint;
 }
-

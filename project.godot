@@ -69,3 +69,7 @@ pause={
 2d_physics/layer_2="Paddle"
 2d_physics/layer_3="Wall"
 2d_physics/layer_4="Edge"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

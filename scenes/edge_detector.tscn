@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://6wodr35qarhp"]
+[gd_scene load_steps=4 format=3 uid="uid://6wodr35qarhp"]
 
 [ext_resource type="Script" path="res://scripts/edge_detector.gd" id="1_82ir0"]
+[ext_resource type="AudioStream" uid="uid://by0xnjjp07kfv" path="res://audio/hitHurt.wav" id="2_seuhm"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o4xsy"]
 normal = Vector2(1, 0)
@@ -9,8 +10,11 @@ normal = Vector2(1, 0)
 position = Vector2(-53, 396)
 collision_layer = 8
 script = ExtResource("1_82ir0")
+left_court_sfx = ExtResource("2_seuhm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("WorldBoundaryShape2D_o4xsy")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

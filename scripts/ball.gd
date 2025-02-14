@@ -52,3 +52,4 @@ func _physics_process(delta):
 		vel = -vel.reflect(normal)
 		vel = clamp_vector_by_angle(vel, PI/4)
 		ball_bounced.emit()
+		

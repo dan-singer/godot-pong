@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpty8cjw8yrms"]
+[gd_scene load_steps=7 format=3 uid="uid://dpty8cjw8yrms"]
 
 [ext_resource type="Script" path="res://scripts/wall.gd" id="1_wpvd3"]
+[ext_resource type="AudioStream" uid="uid://ciib064cqrpu0" path="res://audio/impact2.wav" id="2_id30u"]
 [ext_resource type="PackedScene" uid="uid://c0h0tblvbwnrs" path="res://scenes/impact_visualizer.tscn" id="2_mhdjk"]
 [ext_resource type="Shader" path="res://shaders/impact_visualizer.gdshader" id="3_3fksk"]
 
@@ -25,6 +26,7 @@ shader_parameter/trace_width = 0.015
 [node name="Wall" type="StaticBody2D"]
 collision_layer = 4
 script = ExtResource("1_wpvd3")
+impact_sfx = ExtResource("2_id30u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(640, 20)
@@ -33,3 +35,5 @@ shape = SubResource("RectangleShape2D_ail5x")
 [node name="ImpactVisualizer" parent="." instance=ExtResource("2_mhdjk")]
 material = SubResource("ShaderMaterial_hl62n")
 offset_right = 1280.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
