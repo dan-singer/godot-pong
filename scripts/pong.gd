@@ -7,6 +7,7 @@ class_name Pong extends Node2D
 @export var ai_controller_scene: PackedScene
 @export var paddle_scene: PackedScene
 @export var front_end_scene: PackedScene = preload("res://scenes/game.tscn")
+@export var pause_scene: PackedScene = preload("res://scenes/pause_menu.tscn")
 
 @onready var ball : Ball = $Ball
 @onready var hud: HUD = $HUD
@@ -79,4 +80,7 @@ func set_score(player: int, score: int):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("pause"):
+		var pause_menu = pause_scene.instantiate()
+		add_child(pause_menu)
+		get_tree().paused = true
