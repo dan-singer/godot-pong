@@ -21,7 +21,6 @@ shader_parameter/negative_color = null
 shader_parameter/use_test_data = true
 shader_parameter/progress = 0.0
 shader_parameter/trace_width = 0.015
-shader_parameter/test = Vector2(1, 0.1)
 
 [node name="Wall" type="StaticBody2D"]
 collision_layer = 4

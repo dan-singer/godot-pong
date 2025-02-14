@@ -21,7 +21,6 @@ shader_parameter/negative_color = null
 shader_parameter/use_test_data = true
 shader_parameter/progress = 0.0
 shader_parameter/trace_width = 0.12
-shader_parameter/test = null
 
 [sub_resource type="Image" id="Image_5cgbs"]
 data = {
@@ -39,7 +38,6 @@ image = SubResource("Image_5cgbs")
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_7unjv")
-impact_colors = Array[Color]([Color(0.984341, 0.90397, 0.413452, 1), Color(0.901505, 0.728666, 0.136844, 1), Color(0.82615, 0.62493, 0.361023, 1), Color(0.890268, 0.619469, 0.118598, 1), Color(0.980392, 0.509804, 0.298039, 1)])
 paddle_size = Vector2(20, 100)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

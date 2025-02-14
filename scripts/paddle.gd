@@ -1,12 +1,7 @@
 @tool
 class_name Paddle extends CharacterBody2D
 
-@onready var collision: CollisionShape2D = $CollisionShape2D
-@onready var impact_visualizer: ImpactVisualizer = $ImpactVisualizer
-var normalized_velocity: float
-var speed = 500
-
-@export var impact_colors: Array[Color]
+@export var speed = 500
 @export var paddle_size := Vector2(30, 300):
 	set(size):
 		paddle_size = size
@@ -18,18 +13,15 @@ var speed = 500
 				$CollisionShape2D.position.y = paddle_size.y / 2
 				$ImpactVisualizer.size = paddle_size
 
+@onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var impact_visualizer: ImpactVisualizer = $ImpactVisualizer
+var normalized_velocity: float
+
 func get_size() -> Vector2:
 	return collision.get_shape().get_rect().size
 	
-	
 func _ready():
 	add_to_group("hittable")
-
-	#impact_buffer_img = Image.create(3, MAX_IMPACTS, true, Image.FORMAT_RGBA8)
-	#impact_buffer_img.fill(Color.GREEN)
-	#impact_buffer_tex = ImageTexture.create_from_image(impact_buffer_img);
-	#$Sprite2D.texture = impact_buffer_tex;
-	#color_rect.material.set_shader_parameter("impact_buffer", impact_buffer_tex);
 
 func move(in_normalized_velocity : float):
 	normalized_velocity = in_normalized_velocity

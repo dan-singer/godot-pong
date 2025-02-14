@@ -1,13 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bf465mmp1xrxg"]
+[gd_scene load_steps=9 format=3 uid="uid://bf465mmp1xrxg"]
 
 [ext_resource type="Script" path="res://scripts/front_end.gd" id="1_qgmlh"]
 [ext_resource type="Script" path="res://scripts/mode_collection_container.gd" id="2_0qcgj"]
 [ext_resource type="Script" path="res://scripts/mode_collection_button.gd" id="2_cehpg"]
 [ext_resource type="Resource" uid="uid://dxr6v1wo8bpsh" path="res://Modes/ai_modes.tres" id="3_a2pu7"]
 [ext_resource type="Resource" uid="uid://0y16sn4mivru" path="res://Modes/multiplayer_modes.tres" id="4_xpblh"]
-[ext_resource type="Shader" path="res://shaders/test.gdshader" id="7_8ctnd"]
-[ext_resource type="Texture2D" uid="uid://cuakbf51urv3u" path="res://soil-none-5i4x9p.jpg" id="7_o0sk5"]
-[ext_resource type="Script" path="res://scripts/blur_effect.gd" id="7_t627j"]
+[ext_resource type="Shader" path="res://shaders/live_background.gdshader" id="7_8ctnd"]
+[ext_resource type="Script" path="res://scripts/live_background.gd" id="7_t627j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yi16w"]
 shader = ExtResource("7_8ctnd")
@@ -16,7 +15,6 @@ shader_parameter/angular_quality = 21
 shader_parameter/radius = 0.035
 shader_parameter/sprSize = Vector2(1280, 720)
 shader_parameter/tint = Color(0.481561, 0.756094, 0.679069, 1)
-shader_parameter/tex = ExtResource("7_o0sk5")
 
 [node name="CanvasLayer" type="CanvasLayer"]
 

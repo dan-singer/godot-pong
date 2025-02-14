@@ -32,10 +32,6 @@ func open_mode_collection(button: ModeCollectionButton):
 func show_mode_collection_description(button: ModeCollectionButton):
 	help_panel.modulate = Color(1,1,1,1)
 	help_text.text = button.mode_collection.description
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_back_pressed() -> void:
 	back.visible = false

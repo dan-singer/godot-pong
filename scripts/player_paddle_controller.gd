@@ -5,12 +5,9 @@ class_name PlayerPaddleController extends Node2D
 
 var paddle : Paddle
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	paddle = get_child(0)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var input = Input.get_axis(down_input, up_input)
 	paddle.move(-input)

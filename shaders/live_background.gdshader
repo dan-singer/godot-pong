@@ -23,7 +23,7 @@ vec4 radialBlur(vec2 uv) {
 	return blur;
 }
 
-void fragment() {
+vec4 gaussianBlur(vec2 uv) {
 	vec4 gaussian_blur = vec4(0.0);
 	for (int i = 0; i < angular_quality; ++i)
 	{
@@ -31,15 +31,14 @@ void fragment() {
 		for (int j = 0; j < quality; ++j)
 		{
 			float len = (float(j) / float(quality)) * radius;
-			gaussian_blur += texture(tex, UV + vec2(cos(theta), sin(theta)) * len);
+			gaussian_blur += texture(tex, uv + vec2(cos(theta), sin(theta)) * len);
 		}
 	}
 	gaussian_blur /= float(quality * angular_quality);
-	vec2 edited_uvs = UV * 0.25 + vec2(0.5-0.125);
-	COLOR = gaussian_blur * tint;
+	return gaussian_blur;
 }
 
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
+void fragment() {
+	COLOR = gaussianBlur(UV) * tint;
+}
+

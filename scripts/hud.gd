@@ -1,9 +1,9 @@
 class_name HUD extends CanvasLayer
 
+@onready var winner: Label = $Winner
 @onready var countdown: Label = $Countdown
 var score_labels: Array[Label]
 var countdown_remaining := 0.0
-@onready var winner: Label = $Winner
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

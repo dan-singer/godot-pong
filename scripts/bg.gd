@@ -1,9 +1,8 @@
 extends ColorRect
+
 var pong: Pong
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pong = get_parent()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

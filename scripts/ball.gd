@@ -1,14 +1,15 @@
 class_name Ball extends CharacterBody2D
 
-var speed = 700
-var first_launch_speed = 400
-var vel := Vector2.ZERO
-
 @export var colors : Array[Color];
-var current_color : Color;
+@export var speed = 700
+@export var first_launch_speed = 400
+
+signal ball_bounced()
 
 @onready var color_rect = $ColorRect
-signal ball_bounced()
+
+var vel := Vector2.ZERO
+var current_color : Color;
 
 func _ready():
 	update_color()

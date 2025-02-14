@@ -14,8 +14,3 @@ void fragment() {
 	float sdf = sdBox(centered_uvs, vec2(0.004, .4));
 	COLOR = mix(vec4(0.0), color, 1.0-step(0.0, sdf));
 }
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
